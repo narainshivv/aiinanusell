@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="stylesheet" href="./css/styles.css">
+  <title>decision tree</title>
+  
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="css/clean-blog.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <div> <a style="display: flex; justify-content: space-around; margin-top: -1rem;" class="navbar-brand"
+          href="index.html">
+          <p>ai in a nutshell</p>
+          <div><img style="margin-top: 1rem" src="img/logofinal2.png" height="50" width="80"></div>
+      </div></a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <div class="dropdown">
+  <button class="btn btn btn-outline-light  dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    All Blogs
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+    <a href="decision_tree.html"><button class="dropdown-item" type="button">Decision Tree</button></a>
+    <a href="random_forest.html"><button class="dropdown-item" type="button">Random Forest</button></a>
+    <button class="dropdown-item" type="button">Gradient Boosting</button>
+  </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('img/dtree\ cover\ pic1.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>Decision Tree Classifier</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p>If the data we are dealing with is qualitative or categorical , then also decision trees are proved to be powerful.
+          Decision Tree Classifiers make use of a series of calculated questions regarding the attributes of the test record, for
+          each returned value a follow-up question is asked and hence the splitting is performed from the attributes of the data .
+          This is done until a conclusion about the class label of the record is reached. The difference between the working of a
+          classification and a regression tree lies in the criteria taken for performing a split.
+          While decision tree regressors use RSS criteria , Classification trees calculate and use 3 criteria for splitting the
+          nodes , Classification error rate , Entropy and Gini impurity.
+          Let us now learn about each of them separately.</p>
+          <h4>Understanding the Algorithm working behind :</h4>
+          <p>Before discussing the criteria , let us briefly talk about the overview of working of a classification tree for a better
+          understanding about why they are needed.
+          So the algorithm of building of a decision tree is recursive in nature. At each step, a decision has to be made for
+          further splitting till the last node (leaf node). The decision is based on some question which has an answer in either
+          True or False, and as the response of these questions, we make a split. The algorithm decides which question to ask and
+          when. So we keep narrowing down the data in the form of a tree arranging and distributing it according to it’s classes
+          or label. Now since the data is arranged according to classes, whenever any unknown data is given the tree, it can be
+          easily navigated through the tree to predict it’s class or label.
+          So as discussed, the critical point is deciding which question to ask and when. Basically, every node gets the list of
+          columns(or features) of the dataset as input.
+          So ‘the best question to ask’ is selected by calculating ‘how much an attribute will contribute towards distribution
+          into classes’, (calculated by Gini Impurity and Entropy). Further by using another value of ‘how much of the impurity is
+          reduced’ (calculated by Information gain), we can decide which attribute/feature should be taken as the node to split
+          and proceed further.
+          This calculation and selection procedure keeps happening in a recursive fashion till the whole tree is built.
+          So now we are ready to understand the criteria in more depth with an example data:</p>
+          <h3>Entropy:</h3>
+          <p> So now we are ready to understand the criteria in more depth with an example data:</p>
+          <img src="img/entropy formula.png" alt="" style="padding-left: 9rem;">
+          <p>Where c is the no. of classes and ‘p’ at every point(for each class) is the probability of that class.
+          Suppose we are dealing with a data with n observations to classify it into 2 categories: A or B. Let the no. of
+          instances of class A be x.
+          So we have <b> c =2 , p1 = x/n </b>and <b> p2 = n-x/n .</b> In this case the Entropy E can be obtained as :</p>
+          <h4 style="padding-left: 10rem;">E = -p1*log2(p1) – p2*log2(p2)</h4>
+          <p>Here is the graphical representation of Entropy :</p>
+          <img style="padding-left: 8rem;" src="img/entropy graph.png" alt="">
+          <p>If we compare the graph with the example we discussed above, we can figure out that Entropy is Maximum when
+          probabilities for both classes are Equal, and 0 when probability is 0 or 1 this also validates that the entropy is the
+          amount of disorder(or mix-ups) in the data.</p>
+          <h4>Information Gain :</h4>
+          <p>
+          Information gain is the measure the decrease in entropy after splitting a node. It is the difference between entropies
+          before and after the split. The more the information gain, the more entropy is removed. Significantly, it helps to
+          calculate importance and ordering of the attributes in the nodes.</p>
+          <p>Here is the mathematical representation of Information Gain:</p>
+          <h4 style="padding-left: 9rem;">Gain(R,C) = Entropy(R) – Entropy(R,C)</h4>
+          <p>Here, R represents the root node of the tree and C represents the child obtained after splitting the node R.</p>
+          <h4>Gini Impurity :</h4>
+          <p>Gini impurity is the measure of possibility of a new random data to be classified wrong if that new instance were
+          randomly classified according to the distribution of class labels from the data set.
+          It is calculated by multiplying the probability that a given observation is classified into the correct class and sum of
+          all the probabilities when that particular observation is classified into the wrong class.
+          Here is the mathematical representation of Gini Impurity:</p>
+          <img style="padding-left: 6rem;" src="img/gini1.png" alt="">
+          <p>Where n is the no. of classes and ‘p’ at every point(for each class) is the probability of that class.
+          Suppose we have 2 classes + and - , then we can calculate the Gini Impurity as follows:</p>
+          <h4>Example and Calculation:</h4>
+          <p>Now let us take all the concepts from above and frame them into an example to solve a problem!
+          Before proceeding further, Let us define few terms used below:
+          <br> • Root Node – The First node of the tree having the highest hierarchy
+          <br>• Leaf Node – The nodes at the end of the tree which don’t have any child
+          <br>• Pruning - Tree pruning is the method of trimming down a full tree (obtained through the above process) to reduce the
+          complexity and variance in the data.
+          <br>• Internal Node -</p>
+          <h4>The Camera Data :</h4>
+          <p>This dataset contains 3 column in which the purchased is the target feature
+          <br>• Camera  No of camera in a mobile phone
+          <br>• Gender  Gender (male or female)
+          <br>• Purchased  whether the person purchased the phone with the specified camera count or not</p>
+          <img style="padding-left: 14rem; height: 24rem;"  src="img/cam dataset.jpg" alt="">
+          <p><h6>We will use both Gini Impurity and Entropy as the criteria one by one to find the root node for building the tree, for
+          clear comparison and understanding</h6></p>
+          <h4>• Gini Impurity of Camera Feature :</h4>
+          <p>Let us start by calculating Gini Impurity of the feature Camera.
+          For calculating probability we can arrange the entities of camera feature in the data like this:</p>
+          <img  src="img/gi tabel1.png" alt="">
+          <p>The camera feature has 4 unique values, therefore we can calculate Gini for each type of value and further calculate a
+          weighted Avg as the Gini impurity of camera feature</p>
+          <p><b>G(Camera 1) = 1 – P(YES)]2 - [P(NO)]2
+          <br>= 1 – (3/4)2 – (1/4))2
+          <br>= 0.375
+          <br>G(Camera 2) = 1 – P(YES)]2 - [P(NO)]2
+          <br>= 1 – (1/3))2 – (2/3))2
+          <br>= 0.444
+          <br>G(Camera 3) = 1 – P(YES)]2 - [P(NO)]2
+          <br>= 1 – (1/3)2 – (2/3)2
+          <br>= 0.444
+          <br>G(Camera 4) = 1 – P(YES)]2 - [P(NO)]2
+          <br>= 1 – (3/4)2 – (1/4)2
+          <br>= 0.444</b></p>
+          <h4>• Weighted Sum of Gini Impurity for Camera feature :</h4>
+          <p><b>G(Camera) = (n * (Cam 1) )/m * G(cam 1) + (n * (Cam 2) )/m * G(cam 2) + <br>(n * (Cam 3) )/m * G(cam 3) + (n * (Cam 4) )/m *
+          (cam 4)
+          <br>= (0.2857 * 0.375) + (0.2142 * 0.444) +(0.2142 * 0.444 )+ (0.2857 * 0.375 )<br>=0.4044</b></p>
+          <p>Therefore, Gini Impurity of camera feature = 0.4044</p>
+          <h4>• Gini Impurity of Gender Feature :</h4>
+          <p>Now let us calculate Gini Impurity of the feature Gender.
+          For calculating probability we can arrange the entities of camera feature in the data like this:</p>
+          <img src="img/gini tabel2.png" alt="">
+          <p>Since the gender feature has 2 unique values, therefore we can calculate Gini for each type of value and further
+          calculate a weighted Avg as the Gini impurity of gender feature</p>
+          <center><p><b>G(MALE) = 1 – P(YES)]2 - [P(NO)]2
+          = 1 – (3/7)2 – (4/7)2
+          = 0.489
+          G(FEMALE) = 1 – P(YES)]2 - [P(NO)]2
+          = 1 – (5/7)2 – (4/7)2
+          = 0.408</b></p></center>
+          <h4>• Weighted Sum of Gini Impurity for Gender feature :</h4>
+          <p><b>G(Gender) = (n * (Male) )/m * G(Male) + (n * (Female) )/m * G(Female)
+          = (0.5 * 0.49) + (0.5 * 0.408)
+          = 0.449</b></p>
+          <p>Therefore, Gini Impurity of gender feature = 0.449</p>
+          <p>On comparing we find Gini(Camera) < Gini(Gender), therefore Camera is selected as the root node</p>
+          <p><b>Now, Let us find the root node by calculating Entropy:</b></p>
+          <p><b>• Entropy of the whole Dataset :
+          (This will be used further for calculating entropy of particular features)</b></p>
+          <p><b> E(S) = - P(YES)* log2 (P(yes)) - P(NO)* log2 (P(NO))
+          = 8/14*log(8/14) - 6/14*log(6/14)
+          = -[0.57 * (-0.81) + 0.428 * (-1.22)]
+          = 0.462 + 0.5228
+          = 0.985</b></p>
+          <p><b>Since the Camera feature has 4 unique values, therefore we can calculate Gini for each type of value and further
+          calculate a weighted Avg as the Entropy of Camera feature</p>
+          <p>E(camera 1 ) = 3/4*log(3/4) - 1/4*log(1/4)
+          = - [0.75 * (-0.12) + 0.25*(-0.602)]
+          = - [-0.09 – 0.150]
+          = 0.240
+          E(camera 2 ) = - 1/3*log(1/3) - 2/3*log(2/3)
+          = - [0.333 * (-0.4777) + 0.666*(-0.176)]
+          = - [-0.158 – 0.115]
+          = 0.275</b></p>
+          <p>Similarly we can calculate, E(Cam 3) = 0.275 and E(Cam 4) = 0.240 <br> Weighted Sum of Entropy for Camera feature :</p>
+          <p><b>E(G) = 4/14 * (0.240) + 3/14 * (0.275) + 3/14 * (0.275) + 4/14 * (0.240) = 0.252<b></p>
+          <p>So, Entropy of camera feature = 0.252 <br>
+          
+          Therefore, Information Gain for Camera : = 0.985 – 0.252 = 0.733</p>
+          <p>Since the gender feature has 2 unique values, therefore we can calculate Gini for each type of value and further
+          calculate a weighted Avg as the Entropy of gender feature</p>
+          <h4>Entropy of Gender :</h4>
+          <p><b>E(Male ) = - 3/7*log(3/7) - 4/7*log(4/7)
+          = -[0.428 * (-0.367) + 0.571* (-0.243)]
+          = - [-0.157 – 0.138]
+          = 0.295
+          
+          E(Female ) = - 5/7*log(5/7) - 2/7*log(2/7)
+          = - [-0.104 – 0.155]
+          = 0.295</b> </p>
+          <h4>Weighted Sum of Entropy for Camera feature :</h4>
+          <p>E(Gender) = 7/14 * (0.295) + 7/14 * (0.259)
+          = 0.5*(0.295) + 0.5*(0.259)
+          = 0.147 + 0.129
+          = 0.276
+          
+          <br> So, Entropy of camera feature = 0.276 <br> Therefore, Information Gain for Gender : = 0.985 – 0.276 = 0.709</p>
+          <p>On comparing, we find I.G (Camera) < I.G(Gender), therefore Camera is selected as the root node</p>
+          <p>From both comparisons, we conclude that Camera is the root node.</p>
+          <img style="padding-left: 6rem;" src="img/dtree final root tree.png" alt="">
+        </div>
+      </div>
+      <div>
+    <h3> Code Implementation</h3>
+    <pre>
+    <code>
+
+    # Imprting the necessary libraries
+
+    <div  class=" jumbotron">
+    import pandas as pd
+    import numpy as np
+    import seaborn as sns
+    <hr style= "height:2px;color:gray;background-color:gray">
+    #loading the Iris dataset using seaborn
+    df = sns.load_dataset('iris')
+    <hr style= "height:2px;color:gray;background-color:gray">
+    #mapping the target/label values
+    df['species']=df['species'].map({'setosa':0,'versicolor':1,'virginica':2})
+    <hr style= "height:2px;color:gray;background-color:gray">
+    #seperating the feature and label dataframes
+    X=df.drop(['species'],axis=1)
+    y=df['species']
+    <hr style= "height:2px;color:gray;background-color:gray">
+    from sklearn.model_selection import train_test_split
+    <hr style= "height:2px;color:gray;background-color:gray">
+    X_train,X_test,y_train,y_test=train_test_split(X,y, test_size=0.2,random_state=0)
+    <hr style= "height:2px;color:gray;background-color:gray">
+    #importing Decision Tree
+    from sklearn.tree import DecisionTreeClassifier
+    <hr style= "height:2px;color:gray;background-color:gray">
+    clf = DecisionTreeClassifier()
+    <hr style= "height:2px;color:gray;background-color:gray">
+    #fitting the classifier
+    clf.fit(X_train,y_train)
+    <hr style= "height:2px;color:gray;background-color:gray">
+    #storing the predictions in y_pred
+    y_pred = clf.predict(X_test)
+    <hr style= "height:2px;color:gray;background-color:gray">
+    #importing metrices
+    from sklearn.metrics import  classification_report, accuracy_score, confusion_matrix
+    <hr style= "height:2px;color:gray;background-color:gray">
+    accuracy_score(y_test,y_pred)
+    <hr style= "height:2px;color:gray;background-color:gray">
+    print(confusion_matrix(y_test,y_pred))
+    <hr style= "height:2px;color:gray;background-color:gray">
+    print(classification_report(y_test,y_pred))
+    <hr style= "height:2px;color:gray;background-color:gray">
+    from sklearn.model_selection import GridSearchCV
+    <hr style= "height:2px;color:gray;background-color:gray">
+    param_grid = {
+    'n_estimators': [40,50,100, 200, 300, 500],
+    'learning_rate' : [0.0001, 0.001, 0.01, 0.1, 1.0],
+    }
+    <hr style= "height:2px;color:gray;background-color:gray">
+    xgclf = XGBClassifier()
+    grid_search = GridSearchCV(estimator = xgclf, param_grid = param_grid, 
+                              cv = 3, n_jobs = -1, verbose = 2)
+    <hr style= "height:2px;color:gray;background-color:gray">
+    grid_search.fit(X_train,y_train)
+    <hr style= "height:2px;color:gray;background-color:gray">
+    #est parameters 
+    grid_search.best_params_
+    <hr style= "height:2px;color:gray;background-color:gray">
+    </div>
+    
+
+    
+
+    
+
+
+    </code>
+    </pre>
+    </div>
+    </div>
+
+    
+  </article>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+      <div class="container" >
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center " >
+              <div class="wrapper" style="padding-left: 17.5rem;">
+                <div class="button">
+                  <div class="icon"><i class="fab fa-facebook-f"></i></div>
+                  <span>Facebook</span>
+                </div>
+                
+                <div class="button">
+                  <div class="icon"><a href="https://www.linkedin.com/in/shivesh-narain-478003168/"><i
+                        class="fab fa-instagram"></i></a></div>
+                  <span>Instagram</span>
+                </div>
+                <div class="button">
+                  <div class="icon"><i class="fab fa-github"></i></div>
+                  <span>Github</span>
+                </div>
+                <div class="button">
+                  <div class="icon"><i class="fab fa-youtube"></i></div>
+                  <span>youtube</span>
+                </div>
+                <div>
+            </ul>
+            <center><p>Made with <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+  <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+</svg> in India </p></center>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>

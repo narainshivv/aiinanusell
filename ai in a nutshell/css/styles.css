@@ -1,0 +1,142 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Turret+Road:wght@500&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "poppins", sans-serif;
+}
+.wrapper {
+  height: 50px;
+  padding: 7px;
+}
+html,
+body {
+}
+
+.wrapper .button {
+  display: inline-block;
+  float: left;
+  margin: 0 5px;
+  background: transparent;
+  height: 30px;
+  width: 30px;
+  border-radius: 5000px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-out;
+}
+
+.wrapper .button .icon {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  border-radius: 50px;
+  box-sizing: border-box;
+  line-height: 30px;
+}
+
+.wrapper .button .icon i {
+  font-size: 25px;
+  line-height: 30px;
+  color: black;
+}
+
+.wrapper .button span {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 30px;
+  margin-left: 10px;
+}
+
+.wrapper .button:hover {
+  width: 200px;
+}
+.form_1 {
+  float: right;
+  margin-right: 50px;
+  margin-top: 0px;
+  position: relative;
+  float: right;
+  position: unset;
+  padding-top: 0%;
+}
+
+.inp_1 {
+  border-radius: 50px 15px;
+  padding: 3px;
+  margin-top: 3px;
+  background-color: transparent;
+}
+
+.inp_1:focus {
+  outline: none;
+}
+
+.button_1 {
+  border-radius: 50px 15px;
+  color: #ffffff;
+  background-color: black;
+  padding: 3px;
+  width: 50px;
+}
+
+.wrapper h1 {
+  display: block;
+  margin: 610px;
+  position: absolute;
+  margin-top: 0px;
+}
+
+#overlay {
+  position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}
+
+.myhover {
+  transition: box-shadow 0.3s;
+}
+
+.myhover:hover {
+  box-shadow: 0 0 25px rgba(33, 33, 33, 0.2);
+  background-color: #ffffff;
+}
+
+.logo1{
+  margin-top: -6rem; 
+  margin-left: -7rem;
+}
+
+.logo1 a{
+  padding-left: 4rem; 
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+}
+.logo1 p {
+  margin-left: 1rem;
+}
+.logo1 img {
+  position: relative; 
+  margin-top: 1rem;
+}
+
+@media screen and (max-width: 600px) {
+  .logo1 a{
+    margin-left: 1.5rem;
+  }
+  .list-inline .text-center{
+    padding-left: 3rem;
+  }
+}
